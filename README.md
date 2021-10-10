@@ -1,7 +1,6 @@
 # Example of testing boundaries in an application
 
-This is an example where you could focus your tests on boundaries in your application. A boundary is contract or
-interface between two components.
+This is an example where you could focus your tests on boundaries in your application. A boundary is contract or interface between two components. I go more in depth on the subject in my blog: https://blog.joholo.com/bdd-and-boundaries-part-2/.
 
 The components in this application are:
 
