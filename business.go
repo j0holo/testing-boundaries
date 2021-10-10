@@ -35,7 +35,7 @@ func addNewSubscriber(db *sql.DB, rdb *redis.Client, input Input) (Output, error
 		}, errInvalidMembershipType
 	}
 
-	err := saveNewSubscriber(db, input.Name, input.Email, input.MembershipType, input.UID)
+	err := saveNewSubscriber(db, input.Name, input.Email, input.MembershipType, input.UID, time.Now())
 	if err != nil {
 		return Output{
 			UID:    input.UID,

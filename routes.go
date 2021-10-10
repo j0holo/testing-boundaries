@@ -25,13 +25,13 @@ type application struct {
 
 func (a *application) jsonHandler(w http.ResponseWriter, r *http.Request) {
 	// Read input from request
-	body := r.Body
-	rawInput, err := ioutil.ReadAll(body)
+	rawInput, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.Println(err)
 		writeJSONToClient(w, http.StatusBadRequest, Output{})
 		return
 	}
+	defer r.Body.Close()
 
 	input := Input{}
 	err = json.Unmarshal(rawInput, &input)
