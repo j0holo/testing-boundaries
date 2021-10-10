@@ -13,7 +13,7 @@ import (
 func newRouter(a *application) http.Handler {
 	router := http.NewServeMux()
 
-	router.HandleFunc("/api/v1/json", a.formHandler)
+	router.HandleFunc("/api/v1/json", a.jsonHandler)
 
 	return router
 }
@@ -23,7 +23,7 @@ type application struct {
 	rdb *redis.Client
 }
 
-func (a *application) formHandler(w http.ResponseWriter, r *http.Request) {
+func (a *application) jsonHandler(w http.ResponseWriter, r *http.Request) {
 	// Read input from request
 	body := r.Body
 	rawInput, err := ioutil.ReadAll(body)

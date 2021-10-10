@@ -5,6 +5,8 @@ import (
 	"github.com/go-redis/redis/v8"
 	"log"
 	"net/http"
+	"os"
+	"time"
 )
 
 func main() {
@@ -27,6 +29,14 @@ func main() {
 		db,
 		rdb,
 	}
+
+	go func() {
+		ticker := time.NewTimer(time.Minute)
+		for range ticker.C {
+			// The os.Stdout can be replaced with a S3 blob storage API for example
+			readEmails(rdb, "subscribers", os.Stdout)
+		}
+	}()
 
 	router := newRouter(app)
 
