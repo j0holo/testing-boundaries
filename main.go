@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"github.com/go-redis/redis/v8"
+	_ "github.com/lib/pq"
 	"log"
 	"net/http"
 	"os"
