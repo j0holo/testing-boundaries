@@ -20,6 +20,10 @@ is possible. Just to give your more confidence.
 
 ## Run the tests
 
+Note that the test may fail if you have run the server `go run .` in the main branch. You should delete and restart the
+docker containers with `docker-compose stop`, `docker-compose rm -v`, and `docker-compose up -d`. `rm -v` deletes the
+volumes.
+
 ```bash
 docker-compose up -d
 go test -v -cover ./...
